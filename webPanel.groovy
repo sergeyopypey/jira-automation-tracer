@@ -9,6 +9,7 @@ class AutomationLogEntry {
     Integer ruleId;
     String ruleName;
     Long timestamp;
+    String component;
 }
 
 final String PROPERTY_KEY = "com.troshin.jira.automation.tracer";
@@ -25,12 +26,13 @@ if (issue) {
                 new AutomationLogEntry(
                         ruleId: it.ruleId as Integer,
                         ruleName: it.ruleName as String,
-                        timestamp: it.timestamp as Long
+                        timestamp: it.timestamp as Long,
+                        component: it.component as String
                 );
             };
 
     String html = entries.collect { AutomationLogEntry entry ->
-        "<li><a href='${JIRA_BASE_URL}/secure/AutomationGlobalAdminAction!default.jspa#/rule/$entry.ruleId/audit-log'>$entry.ruleName</a> at ${new Date(entry.timestamp)}</li>"
+        "<li><a href='${JIRA_BASE_URL}/secure/AutomationGlobalAdminAction!default.jspa#/rule/$entry.ruleId/audit-log'>$entry.ruleName</a> [$entry.component] at ${new Date(entry.timestamp)}</li>"
     }.join("\n");
     writer.write("${html}");
 }

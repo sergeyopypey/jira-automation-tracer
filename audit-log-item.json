@@ -1,38 +1,45 @@
 {
-    "id": 66,
-    "summary": "test",
+    "id": 83,
+    "summary": "asdasdasdas",
     "authorKey": "JIRAUSER10000",
-    "created": 1768461846113,
-    "startExecution": 1768461846113,
-    "endExecution": 1768461847802,
+    "created": 1774302763821,
+    "startExecution": 1774302763821,
+    "endExecution": 1774302764031,
     "category": "SUCCESS",
-    "eventSource": "jira.issue.field.changed",
+    "eventSource": "jira.jql.scheduled",
     "objectItem": {
-        "id": 10,
-        "name": "test",
-        "typeName": "jira.issue.field.changed"
+        "id": 13,
+        "name": "asdasdasdas",
+        "typeName": "jira.jql.scheduled"
     },
     "globalAssociatedItems": [],
     "globalMessages": [],
     "componentChanges": [
         {
-            "id": 106,
-            "componentId": 41,
+            "id": 118,
+            "componentId": 89,
             "component": "TRIGGER",
-            "componentNameKey": "com.codebarrel.automation.trigger.field.changed.issue.event",
-            "startTime": 1768461846134,
-            "duration": 84,
+            "componentNameKey": "com.codebarrel.automation.trigger.jql.scheduled",
+            "startTime": 1774302763844,
+            "duration": 140,
             "associatedItems": {
                 "limit": 20,
                 "offset": 0,
-                "total": 1,
+                "total": 2,
                 "results": [
                     {
-                        "id": "10500",
-                        "name": "JSM-6",
+                        "id": "10600",
+                        "name": "SCRUM-15",
                         "typeName": "ISSUE",
-                        "parentId": "10100",
-                        "parentName": "JSM"
+                        "parentId": "10000",
+                        "parentName": "SCRUM"
+                    },
+                    {
+                        "id": "10402",
+                        "name": "SCRUM-13",
+                        "typeName": "ISSUE",
+                        "parentId": "10000",
+                        "parentName": "SCRUM"
                     }
                 ]
             },
@@ -44,12 +51,44 @@
             }
         },
         {
-            "id": 107,
-            "componentId": 42,
+            "id": 119,
+            "componentId": 90,
+            "component": "BRANCH",
+            "componentNameKey": "com.codebarrel.automation.component.related.issues.action.name",
+            "startTime": 1774302763970,
+            "duration": 117,
+            "associatedItems": {
+                "limit": 20,
+                "offset": 0,
+                "total": 1,
+                "results": [
+                    {
+                        "id": "10600",
+                        "name": "SCRUM-15",
+                        "typeName": "ISSUE",
+                        "parentId": "10000",
+                        "parentName": "SCRUM"
+                    }
+                ]
+            },
+            "changeItems": {
+                "limit": 20,
+                "offset": 0,
+                "total": 1,
+                "results": [
+                    {
+                        "fieldName": "com.codebarrel.automation.action.related.issues.no.issues"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 120,
+            "componentId": 91,
             "component": "ACTION",
-            "componentNameKey": "com.codebarrel.automation.component.edit.issue.action.name",
-            "startTime": 1768461846176,
-            "duration": 3236,
+            "componentNameKey": "com.codebarrel.automation.component.log.action.name",
+            "startTime": 1774302764029,
+            "duration": 0,
             "associatedItems": {
                 "limit": 9223372036854775807,
                 "offset": 0,
@@ -62,15 +101,15 @@
                 "total": 1,
                 "results": [
                     {
-                        "fieldName": "com.codebarrel.automation.rule.execution.edit.issue.success",
-                        "changeTo": "JSM-6"
+                        "fieldName": "com.codebarrel.automation.component.log",
+                        "changeTo": "dsadasdasd"
                     }
                 ]
             }
         }
     ],
     "projectIds": [
-        "10100"
+        "10000"
     ],
-    "duration": 1682
+    "duration": 223
 }

@@ -5,6 +5,7 @@ const JIRA_TOKEN = process.env.JIRA_TOKEN;
 const DEFAULT_LIMIT = process.env.DEFAULT_LIMIT;
 const DEFAULT_OFFSET = process.env.DEFAULT_OFFSET;
 const PROPERTY_KEY = process.env.PROPERTY_KEY;
+const OFFSET_STEP = Number(process.env.OFFSET_STEP);
 
 async function fetchAuditLogs(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET) {
   const url = `${JIRA_BASE_URL}/rest/cb-automation/latest/audit/GLOBAL?limit=${limit}&offset=${offset}`;
@@ -53,6 +54,10 @@ async function getIssueProperty(issueIdOrKey) {
     },
   });
 
+  if (response.status === 404) {
+    return null;
+  }
+
   if (!response.ok) {
     throw new Error(`Failed to get property "${PROPERTY_KEY}" from ${issueIdOrKey}: ${response.status} ${response.statusText}`);
   }
@@ -77,56 +82,76 @@ async function setIssueProperty(issueIdOrKey, value) {
   }
 }
 
-function extractIssueKeys(item) {
-  const keys = new Set();
+function extractIssueEntries(item) {
+  // Returns array of { issueKey, component }
+  const entries = [];
 
   for (const change of item.componentChanges || []) {
+    const component = change.component;
     for (const assoc of change.associatedItems?.results || []) {
       if (assoc.typeName === "ISSUE") {
-        keys.add(assoc.name);
+        entries.push({ issueKey: assoc.name, component });
       }
     }
     for (const changeItem of change.changeItems?.results || []) {
       if (changeItem.changeTo) {
         const match = changeItem.changeTo.match(/^[A-Z][A-Z0-9]+-\d+$/);
         if (match) {
-          keys.add(changeItem.changeTo);
+          entries.push({ issueKey: changeItem.changeTo, component });
         }
       }
     }
   }
 
-  return keys;
+  return entries;
+}
+
+async function fetchAllAuditLogs() {
+  const allItems = [];
+  let offset = Number(DEFAULT_OFFSET);
+  const limit = Number(DEFAULT_LIMIT);
+
+  while (true) {
+    console.log(`Fetching audit logs (offset=${offset}, limit=${limit})...`);
+    const data = await fetchAuditLogs(limit, offset);
+    allItems.push(...data.items);
+
+    if (data.items.length < limit) break;
+    offset += OFFSET_STEP;
+  }
+
+  return allItems;
 }
 
 async function main() {
-  const data = await fetchAuditLogs();
-  console.log(`Fetched ${data.items.length} audit log items`);
+  const allItems = await fetchAllAuditLogs();
+  console.log(`Fetched ${allItems.length} total audit log items`);
 
-  const executionItems = data.items.filter((item) => item.category !== "CONFIG_CHANGE");
+  const executionItems = allItems.filter((item) => item.category !== "CONFIG_CHANGE");
   console.log(`Found ${executionItems.length} execution items, fetching details...`);
 
-  // issueKey -> [{ ruleId, ruleName, timestamp }]
+  // issueKey -> [{ ruleId, ruleName, timestamp, component }]
   const issueMap = {};
 
   for (const item of executionItems) {
     const detail = await fetchAuditLogItem(item.id);
-    const issueKeys = extractIssueKeys(detail);
+    const issueEntries = extractIssueEntries(detail);
 
-    for (const key of issueKeys) {
-      if (!issueMap[key]) {
-        issueMap[key] = [];
+    for (const { issueKey, component } of issueEntries) {
+      if (!issueMap[issueKey]) {
+        issueMap[issueKey] = [];
       }
 
-      const alreadyExists = issueMap[key].some(
-        (entry) => entry.ruleId === detail.objectItem.id && entry.timestamp === detail.created
+      const alreadyExists = issueMap[issueKey].some(
+        (entry) => entry.ruleId === detail.objectItem.id && entry.timestamp === detail.created && entry.component === component
       );
 
       if (!alreadyExists) {
-        issueMap[key].push({
+        issueMap[issueKey].push({
           ruleId: detail.objectItem.id,
           ruleName: detail.objectItem.name,
           timestamp: detail.created,
+          component,
         });
       }
     }
@@ -136,9 +161,22 @@ async function main() {
   console.log(`Found ${issueKeys.length} affected issues: ${issueKeys.join(", ")}`);
 
   for (const issueKey of issueKeys) {
-    const propertyValue = issueMap[issueKey];
-    console.log(`Setting property "${PROPERTY_KEY}" on ${issueKey} (${propertyValue.length} entries)`);
-    await setIssueProperty(issueKey, propertyValue);
+    const newEntries = issueMap[issueKey];
+    const existing = await getIssueProperty(issueKey);
+    const existingEntries = existing?.value || [];
+
+    const merged = [...existingEntries];
+    for (const entry of newEntries) {
+      const alreadyExists = merged.some(
+        (e) => e.ruleId === entry.ruleId && e.timestamp === entry.timestamp && e.component === entry.component
+      );
+      if (!alreadyExists) {
+        merged.push(entry);
+      }
+    }
+
+    console.log(`Setting property "${PROPERTY_KEY}" on ${issueKey} (${existingEntries.length} existing + ${merged.length - existingEntries.length} new = ${merged.length} total)`);
+    await setIssueProperty(issueKey, merged);
     console.log(`Done: ${issueKey}`);
   }
 
