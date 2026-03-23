@@ -5,7 +5,7 @@ const JIRA_TOKEN = process.env.JIRA_TOKEN;
 const DEFAULT_LIMIT = process.env.DEFAULT_LIMIT;
 const DEFAULT_OFFSET = process.env.DEFAULT_OFFSET;
 const PROPERTY_KEY = process.env.PROPERTY_KEY;
-const OFFSET_STEP = Number(process.env.OFFSET_STEP);
+const OFFSET_STEP = process.env.OFFSET_STEP;
 
 async function fetchAuditLogs(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET) {
   const url = `${JIRA_BASE_URL}/rest/cb-automation/latest/audit/GLOBAL?limit=${limit}&offset=${offset}`;
