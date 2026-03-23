@@ -1,5 +1,8 @@
+const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 
+const LAST_RUN_FILE = path.join(__dirname, "last-run.json");
 const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 const JIRA_TOKEN = process.env.JIRA_TOKEN;
 const DEFAULT_LIMIT = process.env.DEFAULT_LIMIT;
@@ -82,6 +85,27 @@ async function setIssueProperty(issueIdOrKey, value) {
   }
 }
 
+async function deleteIssueProperty(issueIdOrKey) {
+  const url = `${JIRA_BASE_URL}/rest/api/2/issue/${issueIdOrKey}/properties/${PROPERTY_KEY}`;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${JIRA_TOKEN}`,
+    },
+  });
+
+  if (response.status === 404) {
+    return false;
+  }
+
+  if (!response.ok) {
+    throw new Error(`Failed to delete property "${PROPERTY_KEY}" from ${issueIdOrKey}: ${response.status} ${response.statusText}`);
+  }
+
+  return true;
+}
+
 function extractIssueEntries(item) {
   // Returns array of { issueKey, component }
   const entries = [];
@@ -106,26 +130,55 @@ function extractIssueEntries(item) {
   return entries;
 }
 
-async function fetchAllAuditLogs() {
+function getLastProcessedId() {
+  try {
+    const data = JSON.parse(fs.readFileSync(LAST_RUN_FILE, "utf-8"));
+    return data.lastProcessedId || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function saveLastProcessedId(id) {
+  fs.writeFileSync(LAST_RUN_FILE, JSON.stringify({ lastProcessedId: id }, null, 2));
+}
+
+async function fetchAllAuditLogs(lastProcessedId) {
   const allItems = [];
   let offset = Number(DEFAULT_OFFSET);
   const limit = Number(DEFAULT_LIMIT);
+  let reachedProcessed = false;
 
-  while (true) {
+  while (!reachedProcessed) {
     console.log(`Fetching audit logs (offset=${offset}, limit=${limit})...`);
     const data = await fetchAuditLogs(limit, offset);
-    allItems.push(...data.items);
+
+    for (const item of data.items) {
+      if (item.id <= lastProcessedId) {
+        reachedProcessed = true;
+        break;
+      }
+      allItems.push(item);
+    }
 
     if (data.items.length < limit) break;
-    offset += OFFSET_STEP;
+    offset += Number(OFFSET_STEP);
   }
 
   return allItems;
 }
 
 async function main() {
-  const allItems = await fetchAllAuditLogs();
-  console.log(`Fetched ${allItems.length} total audit log items`);
+  const lastProcessedId = getLastProcessedId();
+  console.log(`Last processed audit log ID: ${lastProcessedId}`);
+
+  const allItems = await fetchAllAuditLogs(lastProcessedId);
+  console.log(`Fetched ${allItems.length} new audit log items`);
+
+  if (allItems.length === 0) {
+    console.log("No new audit logs to process.");
+    return;
+  }
 
   const executionItems = allItems.filter((item) => item.category !== "CONFIG_CHANGE");
   console.log(`Found ${executionItems.length} execution items, fetching details...`);
@@ -152,6 +205,7 @@ async function main() {
           ruleName: detail.objectItem.name,
           timestamp: detail.created,
           component,
+          category: detail.category,
         });
       }
     }
@@ -180,7 +234,44 @@ async function main() {
     console.log(`Done: ${issueKey}`);
   }
 
-  console.log("Finished.");
+  const maxId = Math.max(...allItems.map((item) => item.id));
+  saveLastProcessedId(maxId);
+  console.log(`Finished. Saved last processed ID: ${maxId}`);
 }
 
-main().catch(console.error);
+async function flush() {
+  const allItems = await fetchAllAuditLogs(0);
+  console.log(`Fetched ${allItems.length} total audit log items`);
+
+  const executionItems = allItems.filter((item) => item.category !== "CONFIG_CHANGE");
+  const issueKeys = new Set();
+
+  for (const item of executionItems) {
+    const detail = await fetchAuditLogItem(item.id);
+    const issueEntries = extractIssueEntries(detail);
+    for (const { issueKey } of issueEntries) {
+      issueKeys.add(issueKey);
+    }
+  }
+
+  console.log(`Found ${issueKeys.size} issues to flush: ${[...issueKeys].join(", ")}`);
+
+  for (const issueKey of issueKeys) {
+    const deleted = await deleteIssueProperty(issueKey);
+    console.log(`${issueKey}: ${deleted ? "deleted" : "not found"}`);
+  }
+
+  if (fs.existsSync(LAST_RUN_FILE)) {
+    fs.unlinkSync(LAST_RUN_FILE);
+    console.log("Removed last-run.json");
+  }
+
+  console.log("Flush complete.");
+}
+
+const command = process.argv[2];
+if (command === "flush") {
+  flush().catch(console.error);
+} else {
+  main().catch(console.error);
+}

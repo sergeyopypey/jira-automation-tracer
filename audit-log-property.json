@@ -3,18 +3,21 @@
         "ruleId": 10,
         "ruleName": "test",
         "timestamp": 1768461846113,
-        "component": "TRIGGER"
+        "component": "TRIGGER",
+        "category": "SUCCESS"
     },
     {
         "ruleId": 10,
         "ruleName": "test",
         "timestamp": 1768461846113,
-        "component": "ACTION"
+        "component": "ACTION",
+        "category": "SUCCESS"
     },
     {
         "ruleId": 12,
         "ruleName": "RocketChat",
         "timestamp": 1767339221919,
-        "component": "TRIGGER"
+        "component": "TRIGGER",
+        "category": "SOME_ERRORS"
     }
 ]
