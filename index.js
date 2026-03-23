@@ -139,7 +139,7 @@ async function main() {
     const propertyValue = issueMap[issueKey];
     console.log(`Setting property "${PROPERTY_KEY}" on ${issueKey} (${propertyValue.length} entries)`);
     await setIssueProperty(issueKey, propertyValue);
-    console.log(`  Done: ${issueKey}`);
+    console.log(`Done: ${issueKey}`);
   }
 
   console.log("Finished.");

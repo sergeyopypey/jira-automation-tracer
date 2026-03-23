@@ -1,7 +1,7 @@
-import com.atlassian.jira.component.ComponentAccessor
 import groovy.json.JsonSlurper
 import groovy.transform.Canonical
 import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.component.ComponentAccessor
 import com.adaptavist.hapi.jira.properties.EntityProperties
 
 @Canonical
