@@ -86,6 +86,8 @@ See full example in [audit-log-property.json](audit-log-property.json).
 
 The `webPanel.groovy` script renders automation trace data on the Jira issue view. It deserializes the issue property into `AutomationLogEntry` objects and displays them as a list with links to the automation rule audit log.
 
+![Rule executions web panel](rule_executions.png)
+
 ## API Endpoints (Non-Documented)
 
 ### Get Audit Log Items
