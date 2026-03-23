@@ -1,0 +1,1059 @@
+{
+    "items": [
+        {
+            "id": 74,
+            "summary": "Close sub-tasks when parent is completed",
+            "authorKey": "JIRAUSER10000",
+            "created": 1774195684799,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 4,
+                "name": "Close sub-tasks when parent is completed",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [],
+            "duration": 0
+        },
+        {
+            "id": 73,
+            "summary": "Close sub-tasks when parent is completed",
+            "authorKey": "JIRAUSER10000",
+            "created": 1774195684232,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 4,
+                "name": "Close sub-tasks when parent is completed",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [],
+            "duration": 0
+        },
+        {
+            "id": 72,
+            "summary": "Close sub-tasks when parent is completed",
+            "authorKey": "JIRAUSER10000",
+            "created": 1774195683995,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 4,
+                "name": "Close sub-tasks when parent is completed",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [],
+            "duration": 0
+        },
+        {
+            "id": 71,
+            "summary": "Close epic when all stories have been completed",
+            "authorKey": "JIRAUSER10000",
+            "created": 1774195683758,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 6,
+                "name": "Close epic when all stories have been completed",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 70,
+            "summary": "test-trigger",
+            "authorKey": "JIRAUSER10000",
+            "created": 1769858942840,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.manual.trigger.issue",
+            "objectItem": {
+                "id": 8,
+                "name": "test-trigger",
+                "typeName": "jira.manual.trigger.issue"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 69,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1769858937927,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [],
+            "duration": 0
+        },
+        {
+            "id": 68,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1769858933946,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 9,
+                "name": "test",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 67,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1769761300208,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 66,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1768461846113,
+            "startExecution": 1768461846113,
+            "endExecution": 1768461847802,
+            "category": "SUCCESS",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10100"
+            ],
+            "duration": 1682
+        },
+        {
+            "id": 65,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1768395106075,
+            "startExecution": 1768395106075,
+            "endExecution": 1768395106242,
+            "category": "NO_ACTIONS_PERFORMED",
+            "eventSource": "jira.issue.event.trigger:transitioned",
+            "objectItem": {
+                "id": 9,
+                "name": "test",
+                "typeName": "jira.issue.event.trigger:transitioned"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 164
+        },
+        {
+            "id": 64,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767339221919,
+            "startExecution": 1767339221919,
+            "endExecution": 1767339222311,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 39
+        },
+        {
+            "id": 63,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767339213546,
+            "startExecution": 1767339213546,
+            "endExecution": 1767339213955,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 39
+        },
+        {
+            "id": 62,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767339206799,
+            "startExecution": 1767339206799,
+            "endExecution": 1767339207328,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 59
+        },
+        {
+            "id": 61,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767338555437,
+            "startExecution": 1767338555437,
+            "endExecution": 1767338556086,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 117
+        },
+        {
+            "id": 60,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767268113603,
+            "startExecution": 1767268113603,
+            "endExecution": 1767268143984,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 374
+        },
+        {
+            "id": 59,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767181713646,
+            "startExecution": 1767181713646,
+            "endExecution": 1767181744093,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 398
+        },
+        {
+            "id": 58,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767104103844,
+            "startExecution": 1767104103844,
+            "endExecution": 1767104104469,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 38
+        },
+        {
+            "id": 57,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767096799851,
+            "startExecution": 1767096799851,
+            "endExecution": 1767096800322,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 66
+        },
+        {
+            "id": 56,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095278698,
+            "startExecution": 1767095278698,
+            "endExecution": 1767095279651,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 576
+        },
+        {
+            "id": 55,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095268311,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 54,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095231153,
+            "startExecution": 1767095231153,
+            "endExecution": 1767095231839,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 335
+        },
+        {
+            "id": 53,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095230261,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 52,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095195253,
+            "startExecution": 1767095195253,
+            "endExecution": 1767095195840,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 125
+        },
+        {
+            "id": 51,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095194043,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 50,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095167830,
+            "startExecution": 1767095167830,
+            "endExecution": 1767095168393,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 516
+        },
+        {
+            "id": 49,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095101034,
+            "startExecution": 1767095101034,
+            "endExecution": 1767095101091,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 53
+        },
+        {
+            "id": 48,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095068240,
+            "startExecution": 1767095068240,
+            "endExecution": 1767095068342,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 95
+        },
+        {
+            "id": 47,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767095059049,
+            "startExecution": 1767095059049,
+            "endExecution": 1767095059498,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 439
+        },
+        {
+            "id": 46,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092449793,
+            "startExecution": 1767092449793,
+            "endExecution": 1767092449933,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 53
+        },
+        {
+            "id": 45,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092446404,
+            "startExecution": 1767092446404,
+            "endExecution": 1767092446455,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 33
+        },
+        {
+            "id": 44,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092445452,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 43,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092295299,
+            "startExecution": 1767092295299,
+            "endExecution": 1767092325354,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 50
+        },
+        {
+            "id": 42,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092261516,
+            "startExecution": 1767092261516,
+            "endExecution": 1767092291566,
+            "category": "SUCCESS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 38
+        },
+        {
+            "id": 41,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092256338,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 40,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092174379,
+            "startExecution": 1767092174379,
+            "endExecution": 1767092174423,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 39
+        },
+        {
+            "id": 39,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092172698,
+            "startExecution": 1767092172698,
+            "endExecution": 1767092172756,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 51
+        },
+        {
+            "id": 38,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092169586,
+            "startExecution": 1767092169586,
+            "endExecution": 1767092169632,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 41
+        },
+        {
+            "id": 37,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092168760,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 36,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092152691,
+            "startExecution": 1767092152691,
+            "endExecution": 1767092152736,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 40
+        },
+        {
+            "id": 35,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092152082,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 34,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092088065,
+            "startExecution": 1767092088065,
+            "endExecution": 1767092088117,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 46
+        },
+        {
+            "id": 33,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092074182,
+            "startExecution": 1767092074182,
+            "endExecution": 1767092074283,
+            "category": "SOME_ERRORS",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 96
+        },
+        {
+            "id": 32,
+            "summary": "RocketChat",
+            "authorKey": "JIRAUSER10000",
+            "created": 1767092070349,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.jql.scheduled",
+            "objectItem": {
+                "id": 12,
+                "name": "RocketChat",
+                "typeName": "jira.jql.scheduled"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 31,
+            "summary": "[Transition] Transit issues to 'To Do' once sprint has started",
+            "authorKey": "JIRAUSER10000",
+            "created": 1765201398134,
+            "startExecution": 1765201398134,
+            "endExecution": 1765201398607,
+            "category": "SUCCESS",
+            "eventSource": "jira.sprint.event.trigger:started",
+            "objectItem": {
+                "id": 11,
+                "name": "[Transition] Transit issues to 'To Do' once sprint has started",
+                "typeName": "jira.sprint.event.trigger:started"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 472
+        },
+        {
+            "id": 30,
+            "summary": "[Transition] Transit issues to 'To Do' once sprint has started",
+            "authorKey": "JIRAUSER10000",
+            "created": 1765201390137,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.sprint.event.trigger:started",
+            "objectItem": {
+                "id": 11,
+                "name": "[Transition] Transit issues to 'To Do' once sprint has started",
+                "typeName": "jira.sprint.event.trigger:started"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 0
+        },
+        {
+            "id": 29,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1763894976412,
+            "startExecution": 1763894976412,
+            "endExecution": 1763894976595,
+            "category": "SUCCESS",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10100"
+            ],
+            "duration": 182
+        },
+        {
+            "id": 28,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1763894976098,
+            "startExecution": 1763894976098,
+            "endExecution": 1763894976354,
+            "category": "SUCCESS",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10100"
+            ],
+            "duration": 253
+        },
+        {
+            "id": 27,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1763894957796,
+            "startExecution": 1763894957796,
+            "endExecution": 1763894958023,
+            "category": "SUCCESS",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 225
+        },
+        {
+            "id": 26,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1763894953093,
+            "category": "CONFIG_CHANGE",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [],
+            "duration": 0
+        },
+        {
+            "id": 25,
+            "summary": "test",
+            "authorKey": "JIRAUSER10000",
+            "created": 1763894937106,
+            "startExecution": 1763894937106,
+            "endExecution": 1763894938400,
+            "category": "SUCCESS",
+            "eventSource": "jira.issue.field.changed",
+            "objectItem": {
+                "id": 10,
+                "name": "test",
+                "typeName": "jira.issue.field.changed"
+            },
+            "globalAssociatedItems": [],
+            "globalMessages": [],
+            "componentChanges": [],
+            "projectIds": [
+                "10000"
+            ],
+            "duration": 1292
+        }
+    ],
+    "total": 0
+}

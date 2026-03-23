@@ -1,0 +1,76 @@
+{
+    "id": 66,
+    "summary": "test",
+    "authorKey": "JIRAUSER10000",
+    "created": 1768461846113,
+    "startExecution": 1768461846113,
+    "endExecution": 1768461847802,
+    "category": "SUCCESS",
+    "eventSource": "jira.issue.field.changed",
+    "objectItem": {
+        "id": 10,
+        "name": "test",
+        "typeName": "jira.issue.field.changed"
+    },
+    "globalAssociatedItems": [],
+    "globalMessages": [],
+    "componentChanges": [
+        {
+            "id": 106,
+            "componentId": 41,
+            "component": "TRIGGER",
+            "componentNameKey": "com.codebarrel.automation.trigger.field.changed.issue.event",
+            "startTime": 1768461846134,
+            "duration": 84,
+            "associatedItems": {
+                "limit": 20,
+                "offset": 0,
+                "total": 1,
+                "results": [
+                    {
+                        "id": "10500",
+                        "name": "JSM-6",
+                        "typeName": "ISSUE",
+                        "parentId": "10100",
+                        "parentName": "JSM"
+                    }
+                ]
+            },
+            "changeItems": {
+                "limit": 9223372036854775807,
+                "offset": 0,
+                "total": 0,
+                "results": []
+            }
+        },
+        {
+            "id": 107,
+            "componentId": 42,
+            "component": "ACTION",
+            "componentNameKey": "com.codebarrel.automation.component.edit.issue.action.name",
+            "startTime": 1768461846176,
+            "duration": 3236,
+            "associatedItems": {
+                "limit": 9223372036854775807,
+                "offset": 0,
+                "total": 0,
+                "results": []
+            },
+            "changeItems": {
+                "limit": 20,
+                "offset": 0,
+                "total": 1,
+                "results": [
+                    {
+                        "fieldName": "com.codebarrel.automation.rule.execution.edit.issue.success",
+                        "changeTo": "JSM-6"
+                    }
+                ]
+            }
+        }
+    ],
+    "projectIds": [
+        "10100"
+    ],
+    "duration": 1682
+}
