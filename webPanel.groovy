@@ -19,6 +19,20 @@ class AutomationLogEntry {
 final String PROPERTY_KEY = "com.troshin.jira.automation.tracer";
 final String JIRA_BASE_URL = ComponentAccessor.applicationProperties.getJiraBaseUrl()
 
+final Map<String, String> COMPONENT_ICONS = [
+        "TRIGGER"  : "aui-iconfont-arrow-right",
+        "CONDITION": "aui-iconfont-branch",
+        "BRANCH"   : "aui-iconfont-devtools-fork",
+        "ACTION"   : "aui-iconfont-addon"
+];
+
+final Map<String, List<String>> CATEGORY_CONFIG = [
+        "SUCCESS"             : ["aui-lozenge-success", "Success"],
+        "FAILURE"             : ["aui-lozenge-removed", "Failure"],
+        "SOME_ERRORS"         : ["aui-lozenge-moved", "Some errors"],
+        "NO_ACTIONS_PERFORMED": ["", "Skipped"]
+];
+
 Issue issue = context.get("issue") as Issue;
 if (issue) {
     EntityProperties issueProperties = issue.getEntityPropertiesOverrideSecurity();
@@ -40,35 +54,44 @@ if (issue) {
 
     StringBuilder html = new StringBuilder()
     html.append("<table class='aui'>")
+    html.append("<thead><tr>")
+    html.append("<th></th>")
+    html.append("<th>Rule</th>")
+    html.append("<th>Status</th>")
+    html.append("<th>Time</th>")
+    html.append("</tr></thead>")
+    html.append("<tbody>")
     String htmlAutomationLogEntries = entries.collect { AutomationLogEntry entry ->
         StringBuilder htmlAutomationLogEntry = new StringBuilder();
-        String categoryLozenge = getCategoryLozenge(entry.category);
+        String componentIcon = getComponentIcon(entry.component, COMPONENT_ICONS);
+        String categoryLozenge = getCategoryLozenge(entry.category, CATEGORY_CONFIG);
         htmlAutomationLogEntry.append("<tr>")
-        htmlAutomationLogEntry.append("<td><a href='${JIRA_BASE_URL}/secure/AutomationGlobalAdminAction!default.jspa#/rule/$entry.ruleId/audit-log'>$entry.ruleName</a></td>")
-        htmlAutomationLogEntry.append("<td>${entry.component}</td>")
-        htmlAutomationLogEntry.append("<td>${categoryLozenge}</td>")
+        htmlAutomationLogEntry.append("<td style='width: 20px'>${componentIcon}</td>")
+        htmlAutomationLogEntry.append("<td><a href='${JIRA_BASE_URL}/secure/AutomationGlobalAdminAction!default.jspa#/rule/${entry.ruleId}/audit-log'>${entry.ruleName}</a></td>")
+        htmlAutomationLogEntry.append("<td style='white-space: nowrap'>${categoryLozenge}</td>")
         htmlAutomationLogEntry.append("<td>${formatTimestamp(entry.timestamp, userTimeZone)}</td>")
         htmlAutomationLogEntry.append("</tr>")
         return htmlAutomationLogEntry.toString();
     }.join("\n");
     html.append(htmlAutomationLogEntries)
+    html.append("</tbody>")
     html.append("</table>")
     writer.write("${html}");
 }
 
-String getCategoryLozenge(String category) {
-    switch (category) {
-        case "SUCCESS":
-            return "<span class=\"aui-lozenge aui-lozenge-success\"><span class=\"aui-icon aui-icon-small aui-iconfont-approve\" role=\"img\"></span></span>";
-        case "FAILURE":
-            return "<span class=\"aui-lozenge aui-lozenge-removed\"><span class=\"aui-icon aui-icon-small aui-iconfont-cross-circle\" role=\"img\"></span></span>";
-        case "SOME_ERRORS":
-            return "<span class=\"aui-lozenge aui-lozenge-removed\"><span class=\"aui-icon aui-icon-small aui-iconfont-cross-circle\" role=\"img\"></span></span>";
-        case "NO_ACTIONS_PERFORMED":
-            return "<span class=\"aui-lozenge aui-lozenge-success\"><span class=\"aui-icon aui-icon-small aui-iconfont-vid-forward\" role=\"img\"></span></span>"
-        default:
-            return "";
+String getComponentIcon(String component, Map<String, String> componentIcons) {
+    String iconClass = componentIcons.getOrDefault(component, "aui-iconfont-question-circle");
+    return "<span class=\"aui-icon aui-icon-small ${iconClass}\" title=\"${component}\"></span>";
+}
+
+String getCategoryLozenge(String category, Map<String, List<String>> categoryConfig) {
+    List<String> config = categoryConfig.get(category);
+    if (!config) {
+        return "<span class=\"aui-lozenge aui-lozenge-subtle\">${category}</span>";
     }
+    String lozengeClass = config[0];
+    String label = config[1];
+    return "<span class=\"aui-lozenge aui-lozenge-subtle ${lozengeClass}\">${label}</span>";
 }
 
 String formatTimestamp(Long timestamp, String timeZoneId) {

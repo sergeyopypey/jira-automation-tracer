@@ -1,60 +1,49 @@
 # Jira Automation Tracer
 
-This middleware helps track Automation for Jira logs and link them to the issues.
+Tracks Automation for Jira execution logs and links them to affected issues via issue properties, displayed through a ScriptRunner web panel.
 
-> **ATTENTION!** This is using a non-documented method.
+> **ATTENTION!** This uses non-documented Automation for Jira REST API endpoints.
 
 ## How It Works
 
-1. Fetches automation audit logs from Jira (paginated)
-2. For each execution log, fetches detailed item to extract affected issues
+1. A ScriptRunner scheduled job (`cronJob.groovy`) polls automation audit logs from Jira (paginated)
+2. For each execution log, fetches the detailed item to extract affected issues
 3. Groups entries by issue key with deduplication
 4. Merges new entries with existing issue properties (without overwriting)
-5. Tracks the last processed audit log ID to avoid reprocessing
+5. Tracks the last processed audit log ID in Plugin Settings to avoid reprocessing
+6. On cold start (first run), saves the current latest audit log ID and begins processing from the next run
 
 ## Setup
 
 ### Prerequisites
 
-- Node.js
-- Jira instance with Automation for Jira
+- Jira Data Center with [Automation for Jira](https://marketplace.atlassian.com/apps/1215460/automation-for-jira-data-center-and-server)
+- [ScriptRunner for Jira](https://marketplace.atlassian.com/apps/6820/scriptrunner-for-jira)
 
-### Installation
+### Scheduled Job (`cronJob.groovy`)
 
-```bash
-npm install
-```
+1. In Jira, go to **ScriptRunner > Jobs**
+2. Create a new **Custom Scheduled Job**
+3. Paste the contents of `cronJob.groovy`
+4. Configure the cron schedule (e.g., `0 0/5 * * * ?` for every 5 minutes)
+5. Update the authentication header to use your own token/secrets provider
+
+### Web Panel (`webPanel.groovy`)
+
+1. Go to **ScriptRunner > Fragments > Web Panel**
+2. Paste the contents of `webPanel.groovy`
+3. Set the location to the desired issue view section (e.g., `atl.jira.view.issue.right.context`)
 
 ### Configuration
 
-Create a `.env` file:
+Key constants in `cronJob.groovy`:
 
-```env
-JIRA_BASE_URL=https://your-jira-instance.com
-JIRA_TOKEN=your-personal-access-token
-DEFAULT_LIMIT=100
-DEFAULT_OFFSET=0
-OFFSET_STEP=100
-PROPERTY_KEY=com.troshin.jira.automation.tracer
-```
-
-## Usage
-
-### Process new audit logs
-
-```bash
-npm start
-```
-
-Fetches new automation audit logs since the last run, extracts affected issues, and writes automation trace data as an issue property.
-
-### Flush all issue properties
-
-```bash
-npm run flush
-```
-
-Removes the automation tracer property from all affected issues and resets the last processed state. Use this to clean up and start fresh.
+| Constant | Default | Description |
+| --- | --- | --- |
+| `OFFSET_STEP` | `100` | Pagination step size |
+| `DEFAULT_LIMIT` | `100` | Items per API request |
+| `MAX_ITEMS_PER_RUN` | `1000` | Max items processed per execution |
+| `PROPERTY_KEY` | `com.troshin.jira.automation.tracer` | Issue property key for storing trace data |
 
 ## Issue Property Format
 
@@ -82,9 +71,9 @@ Each affected issue gets a JSON property (`PROPERTY_KEY`) containing an array of
 
 See full example in [audit-log-property.json](audit-log-property.json).
 
-## Web Panel (ScriptRunner)
+## Web Panel
 
-The `webPanel.groovy` script renders automation trace data on the Jira issue view. It deserializes the issue property into `AutomationLogEntry` objects and displays them as a list with links to the automation rule audit log.
+The `webPanel.groovy` script renders automation trace data on the Jira issue view as a ScriptRunner web panel. It reads the issue property, deserializes it into `AutomationLogEntry` objects, and displays them as a table with component icons, status lozenges, and links to the automation rule audit log. Timestamps are displayed in the current user's timezone.
 
 ![Rule executions web panel](rule_executions.png)
 
