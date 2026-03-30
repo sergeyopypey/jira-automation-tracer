@@ -56,26 +56,35 @@ Map fetchAuditLogItem(Long id) {
 }
 
 List<Map> getIssueProperty(String issueIdOrKey) {
-    EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
-    String json = properties.getJson(PROPERTY_KEY);
+    try {
+        EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
+        String json = properties.getJson(PROPERTY_KEY);
 
-    if (json == null || json.isEmpty()) {
+        if (json == null || json.isEmpty()) {
+            return null;
+        }
+
+        return jsonSlurper.parseText(json) as List<Map>;
+    } catch (com.adaptavist.hapi.jira.issues.exceptions.IssueRetrievalException e) {
+        logger.warn("Issue ${issueIdOrKey} no longer exists, skipping: ${e.message}");
         return null;
     }
-
-    return jsonSlurper.parseText(json) as List<Map>;
 }
 
 void setIssueProperty(String issueIdOrKey, List<Map> value) {
-    EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
-    String json = JsonOutput.toJson(value);
-    properties.setJson(PROPERTY_KEY, json);
+    try {
+        EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
+        String json = JsonOutput.toJson(value);
+        properties.setJson(PROPERTY_KEY, json);
+    } catch (com.adaptavist.hapi.jira.issues.exceptions.IssueRetrievalException e) {
+        logger.warn("Issue ${issueIdOrKey} no longer exists, skipping property update: ${e.message}");
+    }
 }
 
-void deleteIssueProperty(String issueIdOrKey) {
-    EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
-    properties.setJson(PROPERTY_KEY, null);
-}
+// void deleteIssueProperty(String issueIdOrKey) {
+//     EntityProperties properties = Issues.getByKey(issueIdOrKey).getEntityPropertiesOverrideSecurity();
+//     properties.setJson(PROPERTY_KEY, null);
+// }
 
 // --- Processing logic ---
 
